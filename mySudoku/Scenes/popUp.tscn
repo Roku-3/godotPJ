@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/popUp.gd" type="Script" id=1]
+[ext_resource path="res://Images/modal_red.png" type="Texture" id=2]
+[ext_resource path="res://Images/modal_blue.png" type="Texture" id=3]
+[ext_resource path="res://Images/modal_indicator.png" type="Texture" id=4]
+
+[node name="popUp" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GridConfirm" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.733333 )
+texture = ExtResource( 2 )
+
+[node name="GridTemp" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.313726 )
+texture = ExtResource( 3 )
+
+[node name="ModalIndicator" type="Sprite" parent="."]
+texture = ExtResource( 4 )

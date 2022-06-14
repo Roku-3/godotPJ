@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/ChainAncor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Chain.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Car.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/PlayerParticles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/PlayerCam.gd" type="Script" id=6]
+
+[node name="Chain" type="Node2D"]
+script = ExtResource( 2 )
+chainLength = 12
+
+[node name="PlayerCam" type="Camera2D" parent="."]
+rotation = 1.57079
+current = true
+script = ExtResource( 6 )
+
+[node name="ChainAnchor" parent="." instance=ExtResource( 1 )]
+z_index = 2
+
+[node name="PlayerParticles" parent="." instance=ExtResource( 4 )]
+
+[node name="Car" parent="." instance=ExtResource( 3 )]
+rotation = 1.57079
+z_index = 10
+mass = 10.0
+applied_force = Vector2( 500, 200 )
+speed = 150

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Images/MGoal.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.1655
+
+[node name="MGoalArea" type="Area2D"]
+
+[node name="MGoal" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

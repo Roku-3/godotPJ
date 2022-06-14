@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/南国パラダイス.mp3-3fa412e3b9264d933be6ce607b840e71.mp3str"
+
+[deps]
+
+source_file="res://Sound/南国パラダイス.mp3"
+dest_files=[ "res://.import/南国パラダイス.mp3-3fa412e3b9264d933be6ce607b840e71.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

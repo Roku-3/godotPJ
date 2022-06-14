@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Images/restartBtn.png" type="Texture" id=2]
+[ext_resource path="res://Images/NextStageBtn.png" type="Texture" id=3]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="HUD" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="RestartBtn" type="TextureButton" parent="."]
+margin_left = 75.0
+margin_top = 472.0
+margin_right = 149.0
+margin_bottom = 546.0
+texture_normal = ExtResource( 2 )
+
+[node name="NestStageBtn" type="TextureButton" parent="."]
+margin_left = 225.0
+margin_top = 491.0
+margin_right = 289.0
+margin_bottom = 531.0
+shortcut = SubResource( 2 )
+texture_normal = ExtResource( 3 )
+
+[node name="WinEff" type="CPUParticles2D" parent="."]
+position = Vector2( 539, 624 )
+emitting = false
+amount = 50
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 1 )
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 500 )
+initial_velocity = 500.0
+initial_velocity_random = 0.38
+scale_amount = 30.0
+scale_amount_random = 0.37
+
+[connection signal="pressed" from="RestartBtn" to="." method="_on_RestartBtn_pressed"]
+[connection signal="pressed" from="NestStageBtn" to="." method="_on_NestStageBtn_pressed"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://SpikeRock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/light.png" type="Texture" id=2]
+[ext_resource path="res://Images/tile_gnd.png" type="Texture" id=3]
+[ext_resource path="res://Images/tile_gnd_nor.png" type="Texture" id=4]
+[ext_resource path="res://Stomper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hopFloor.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "tile_gnd.png 0"
+0/texture = ExtResource( 3 )
+0/normal_map = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 16 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="Main" type="Node2D"]
+
+[node name="SpikeRock" parent="." instance=ExtResource( 1 )]
+position = Vector2( 429.263, 247.812 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 169, 142 )
+texture = ExtResource( 2 )
+energy = 2.0
+range_height = 1.0
+
+[node name="hopFloor" parent="Light2D" instance=ExtResource( 6 )]
+position = Vector2( 126, 112 )
+
+[node name="TileMap" type="TileMap" parent="."]
+mode = 2
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 917502, 0, 3, 917503, 0, 2, 851968, 0, 3, 983038, 0, 1, 983039, 0, 3, 917504, 0, 1, 917505, 0, 2, 917506, 0, 3, 917534, 0, 1, 917535, 0, 2, 917536, 0, 2, 917537, 0, 2, 917538, 0, 2, 917539, 0, 3, 1048574, 0, 0, 1048575, 0, 1, 983040, 0, 1, 983041, 0, 2, 983042, 0, 3, 983043, 0, 3, 983044, 0, 3, 983045, 0, 3, 983046, 0, 1, 983066, 0, 3, 983067, 0, 1, 983068, 0, 3, 983069, 0, 0, 983070, 0, 1, 983071, 0, 2, 983072, 0, 3, 983073, 0, 0, 983074, 0, 3, 983075, 0, 1, 1114110, 0, 1, 1114111, 0, 2, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 1, 1048579, 0, 0, 1048580, 0, 3, 1048581, 0, 2, 1048582, 0, 1, 1048583, 0, 1, 1048584, 0, 2, 1048585, 0, 1, 1048586, 0, 1, 1048602, 0, 0, 1048603, 0, 2, 1048604, 0, 2, 1048605, 0, 2, 1048606, 0, 1, 1048607, 0, 3, 1048608, 0, 0, 1048609, 0, 2, 1048610, 0, 0, 1048611, 0, 3, 1179646, 0, 1, 1179647, 0, 3, 1114112, 0, 3, 1114113, 0, 0, 1114114, 0, 3, 1114115, 0, 1, 1114116, 0, 0, 1114117, 0, 2, 1114118, 0, 1, 1114119, 0, 3, 1114120, 0, 2, 1114121, 0, 1, 1114122, 0, 1, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 2, 1114126, 0, 1, 1114127, 0, 2, 1114128, 0, 2, 1114129, 0, 2, 1114130, 0, 1, 1114131, 0, 2, 1114132, 0, 0, 1114133, 0, 2, 1114134, 0, 3, 1114135, 0, 2, 1114136, 0, 2, 1114137, 0, 2, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 2, 1114141, 0, 1, 1114142, 0, 3, 1114143, 0, 3, 1114144, 0, 2, 1114145, 0, 3, 1114146, 0, 2, 1114147, 0, 3, 1245182, 0, 3, 1245183, 0, 0, 1179648, 0, 1, 1179649, 0, 1, 1179650, 0, 2, 1179651, 0, 1, 1179652, 0, 1, 1179653, 0, 2, 1179654, 0, 2, 1179655, 0, 1, 1179656, 0, 2, 1179657, 0, 1, 1179658, 0, 3, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 2, 1179662, 0, 3, 1179663, 0, 1, 1179664, 0, 3, 1179665, 0, 0, 1179666, 0, 3, 1179667, 0, 1, 1179668, 0, 1, 1179669, 0, 2, 1179670, 0, 3, 1179671, 0, 3, 1179672, 0, 3, 1179673, 0, 2, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 2, 1179677, 0, 0, 1179678, 0, 3, 1179679, 0, 3, 1179680, 0, 1, 1179681, 0, 2, 1179682, 0, 1, 1179683, 0, 2, 1310718, 0, 2, 1310719, 0, 0, 1245184, 0, 2, 1245185, 0, 1, 1245186, 0, 0, 1245187, 0, 2, 1245188, 0, 0, 1245189, 0, 2, 1245190, 0, 3, 1245191, 0, 3, 1245192, 0, 2, 1245193, 0, 0, 1245194, 0, 3, 1245195, 0, 1, 1245196, 0, 3, 1245197, 0, 1, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 2, 1245202, 0, 3, 1245203, 0, 0, 1245204, 0, 1, 1245205, 0, 1, 1245206, 0, 0, 1245207, 0, 1, 1245208, 0, 3, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 2, 1245212, 0, 3, 1245213, 0, 2, 1245214, 0, 0 )
+
+[node name="Stomper" parent="." instance=ExtResource( 5 )]
+position = Vector2( 220, 232 )
+collision_mask = 3

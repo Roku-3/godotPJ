@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Script/Game.gd" type="Script" id=3]
+[ext_resource path="res://Sound/南国パラダイス.mp3" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 41
+font_data = ExtResource( 2 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Result" type="Label" parent="CanvasLayer"]
+margin_left = 347.0
+margin_top = 263.0
+margin_right = 487.0
+margin_bottom = 319.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timeleft" type="Label" parent="CanvasLayer"]
+margin_left = 868.0
+margin_top = 4.0
+margin_right = 1008.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="StartMSG" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 299.0
+margin_top = 396.0
+margin_right = 736.0
+margin_bottom = 447.0
+custom_fonts/font = SubResource( 2 )
+text = "press space to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Images/Obs0.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Chain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/MGoalArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Obs_Circle.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ShaderBG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/MultiGoal.gd" type="Script" id=7]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.03
+rough = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 72.1734
+
+[node name="Stage4" type="Node2D"]
+
+[node name="ShaderBG" parent="." instance=ExtResource( 6 )]
+
+[node name="MultiGoal" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="MGoalArea" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 1168, 368 )
+collision_layer = 8
+collision_mask = 7
+
+[node name="MGoalArea2" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 1168, 216 )
+collision_mask = 7
+
+[node name="MGoalArea3" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 954, 1 )
+collision_mask = 7
+
+[node name="MGoalArea4" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 803, -1 )
+collision_mask = 7
+
+[node name="MGoalArea5" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 809, 216 )
+collision_mask = 7
+
+[node name="MGoalArea6" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 948, 365 )
+collision_mask = 7
+
+[node name="MGoalArea7" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 810, 365 )
+collision_mask = 7
+
+[node name="MGoalArea8" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 958, 570 )
+collision_mask = 7
+
+[node name="MGoalArea9" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 805, 575 )
+collision_mask = 7
+
+[node name="MGoalArea10" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 582, 369 )
+collision_mask = 7
+
+[node name="MGoalArea11" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 581, 216 )
+collision_mask = 7
+
+[node name="Chain" parent="." instance=ExtResource( 2 )]
+position = Vector2( 973, 198 )
+chainLength = 83
+
+[node name="Obstacles" type="Node2D" parent="."]
+position = Vector2( 258, 76 )
+
+[node name="StaticBody0" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 370, 216.667 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="Obstacles/StaticBody0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/StaticBody0"]
+polygon = PoolVector2Array( 58, -67, 66, -59, 72, -49, 72, 48, 67, 58, 60, 66, 48, 72, -46, 72, -55, 69, -65, 61, -72, 47, -72, -48, -65, -60, -58, -67, -48, -72, 48, -72 )
+
+[node name="StaticBody2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 866.667, 216.667 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="Obstacles/StaticBody2"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/StaticBody2"]
+polygon = PoolVector2Array( 58, -67, 66, -59, 72, -49, 72, 48, 67, 58, 60, 66, 48, 72, -46, 72, -55, 69, -65, 61, -72, 47, -72, -48, -65, -60, -58, -67, -48, -72, 48, -72 )
+
+[node name="StaticBody3" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 620, -33.3333 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="Obstacles/StaticBody3"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/StaticBody3"]
+polygon = PoolVector2Array( 58, -67, 66, -59, 72, -49, 72, 48, 67, 58, 60, 66, 48, 72, -46, 72, -55, 69, -65, 61, -72, 47, -72, -48, -65, -60, -58, -67, -48, -72, 48, -72 )
+
+[node name="StaticBody4" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 623.333, 453.333 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="Obstacles/StaticBody4"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/StaticBody4"]
+polygon = PoolVector2Array( 58, -67, 66, -59, 72, -49, 72, 48, 67, 58, 60, 66, 48, 72, -46, 72, -55, 69, -65, 61, -72, 47, -72, -48, -65, -60, -58, -67, -48, -72, 48, -72 )
+
+[node name="StaticBody1" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 623, 213 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="Obstacles/StaticBody1"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticBody1"]
+shape = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
+nextScenePath = "res://Scenes/Stage5.tscn"
+
+[connection signal="mgoaled" from="MultiGoal" to="CanvasLayer/HUD" method="_on_MultiGoal_mgoaled"]
+[connection signal="did_goal" from="CanvasLayer/HUD" to="Chain" method="_on_HUD_did_goal"]

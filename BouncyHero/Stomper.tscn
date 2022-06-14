@@ -1,0 +1,193 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Stomper.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/stomp0.wav" type="AudioStream" id=2]
+
+[sub_resource type="StreamTexture" id=35]
+load_path = "res://.import/Layer 1.png-8eb71753481c51dd94368e7852b9808c.stex"
+
+[sub_resource type="Animation" id=2]
+length = 0.32
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 0.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.32
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2.0, 3.0, 4.0, 5.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.32
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6.0, 7.0, 8.0, 9.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.16
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10.0, 11.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 6, 11 )
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "spin"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "spin"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "stomp"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/Idle/node = SubResource( 10 )
+states/Idle/position = Vector2( 42, 85 )
+states/holdspin/node = SubResource( 27 )
+states/holdspin/position = Vector2( 494, 312 )
+states/run/node = SubResource( 11 )
+states/run/position = Vector2( 123, 269 )
+states/spin/node = SubResource( 12 )
+states/spin/position = Vector2( 315, 13 )
+states/stomp/node = SubResource( 13 )
+states/stomp/position = Vector2( 570, 13 )
+transitions = [ "Idle", "run", SubResource( 14 ), "run", "Idle", SubResource( 15 ), "spin", "Idle", SubResource( 16 ), "spin", "run", SubResource( 17 ), "run", "spin", SubResource( 24 ), "Idle", "spin", SubResource( 25 ), "stomp", "holdspin", SubResource( 28 ), "holdspin", "Idle", SubResource( 29 ), "holdspin", "run", SubResource( 30 ), "spin", "stomp", SubResource( 32 ), "holdspin", "stomp", SubResource( 33 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -130, -49 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="Curve" id=34]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.30488, 0.0, 0, 0 ]
+
+[node name="Stomper" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 35 )
+hframes = 4
+vframes = 3
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PUFuaW1hdGlvblBsYXllcgpzb3VyY2V8PUM6L1VzZXJzL1Jva3UvT25lRHJpdmUv44OJ44Kt44Ol44Oh44Oz44OIL3Jva3VBc2Vwcml0ZS9Cb3VuY3lIZXJvL3N0b21wZXIuYXNlcHJpdGUKbGF5ZXJ8PUxheWVyIDEKb3BfZXhwfD1UcnVlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+anims/run = SubResource( 3 )
+anims/spin = SubResource( 4 )
+anims/stomp = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 36 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 18 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("Sprite:frame")
+parameters/playback = SubResource( 19 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -6, 0 )
+enabled = true
+cast_to = Vector2( 0, 25 )
+collision_mask = 2
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( 6, 0 )
+enabled = true
+cast_to = Vector2( 0, 25 )
+collision_mask = 2
+
+[node name="StompEffect" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 14 )
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 1 )
+direction = Vector2( 1, 10 )
+spread = 90.43
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.05
+angular_velocity = 434.17
+scale_amount = 3.0
+scale_amount_curve = SubResource( 34 )
+
+[node name="se_stomp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )

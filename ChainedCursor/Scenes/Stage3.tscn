@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Images/Obs0.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Chain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/MGoalArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ShaderBG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/MultiGoal.gd" type="Script" id=7]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.16
+rough = true
+
+[node name="Stage3" type="Node2D"]
+
+[node name="ShaderBG" parent="." instance=ExtResource( 6 )]
+
+[node name="MultiGoal" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="MGoalArea" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 213, 346 )
+collision_layer = 8
+collision_mask = 7
+
+[node name="MGoalArea2" parent="MultiGoal" instance=ExtResource( 3 )]
+position = Vector2( 431, 343 )
+collision_mask = 7
+
+[node name="Chain" parent="." instance=ExtResource( 2 )]
+position = Vector2( 50, 159 )
+chainLength = 19
+
+[node name="StaticBody0" type="StaticBody2D" parent="."]
+position = Vector2( 323, 387 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Obs0" type="Sprite" parent="StaticBody0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody0"]
+polygon = PoolVector2Array( 58, -67, 66, -59, 72, -49, 72, 48, 67, 58, 60, 66, 48, 72, -46, 72, -55, 69, -65, 61, -72, 47, -72, -48, -65, -60, -58, -67, -48, -72, 48, -72 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
+nextScenePath = "res://Scenes/Stage4.tscn"
+
+[connection signal="mgoaled" from="MultiGoal" to="CanvasLayer/HUD" method="_on_MultiGoal_mgoaled"]
+[connection signal="did_goal" from="CanvasLayer/HUD" to="Chain" method="_on_HUD_did_goal"]

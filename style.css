@@ -1,0 +1,9 @@
+#gameFrame {
+    margin: 100px;
+    width: 400px;
+    height: 300px;
+}
+
+body {
+    background-color: rgb(180, 141, 220);
+}
