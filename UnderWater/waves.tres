@@ -1,0 +1,72 @@
+[gd_resource type="Shader" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float h0 : hint_range(0.0,1.0); // The height of the horizon
+uniform float h1 : hint_range(0.0,1.0);
+uniform float h2 : hint_range(0.0,1.0);
+uniform float h3 : hint_range(0.0,1.0);
+uniform float h4 : hint_range(0.0,1.0);
+uniform float h5 : hint_range(0.0,1.0);
+uniform float c0 : hint_range(0.0,1.0); // The height of the horizon
+uniform float c1 : hint_range(0.0,1.0);
+uniform float c2 : hint_range(0.0,1.0);
+uniform float c3 : hint_range(0.0,1.0);
+uniform float c4 : hint_range(0.0,1.0);
+uniform float c5 : hint_range(0.0,1.0);
+uniform sampler2D noise; // add two noises. Play with these some time to get a decent result
+uniform float wave_frequency : hint_range(0.0, 100.0);
+uniform float wave_magnitude : hint_range(0.0, .3);
+uniform float tides_magnitude : hint_range(0.0, .3);
+uniform float noise_wave : hint_range(0.0, 3.0); // add noisiness to waves
+uniform float tides_speed : hint_range(0.0, 20.0);
+uniform float wave_speed : hint_range(0.0, 20.0);
+
+uniform vec4 water_color : hint_color;
+
+void fragment()
+{	
+	float waves[6];
+	float wcolor[6];
+	waves[0] = h0;
+	waves[1] = h1;
+	waves[2] = h2;
+	waves[3] = h3;
+	waves[4] = h4;
+	waves[5] = h5;
+	wcolor[0] = c0;
+	wcolor[1] = c1;
+	wcolor[2] = c2;
+	wcolor[3] = c3;
+	wcolor[4] = c4;
+	wcolor[5] = c5;
+	
+	for (int i=0; i<6; i++){
+		float move_right;
+		if(i%2==1){
+			move_right = 1.;
+		}else{
+			move_right = -1.;
+		}
+		waves[i] += sin(UV.x * wave_frequency + move_right*TIME* wave_speed) * wave_magnitude;
+		waves[i] += sin(TIME * tides_speed) * tides_magnitude;
+		waves[i] -= texture(noise, UV).r * 0.05 * noise_wave;
+	
+	}
+	
+	
+	vec4 col = vec4(0);
+	for (int i=0; i<6; i++){
+		vec4 darkness = vec4(wcolor[i],wcolor[i],wcolor[i],1.);
+		col = mix(col, darkness, step(waves[i], UV.y));
+	}
+	
+	// color burn
+	col = 1.0 - (1. - water_color) / col;
+	
+	COLOR = col;
+}"
+script = SubResource( 1 )
