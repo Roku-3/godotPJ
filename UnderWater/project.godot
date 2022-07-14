@@ -27,6 +27,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg" )
 
+[global]
+
+asdfasdfasdfasdf=false
+
 [importer_defaults]
 
 texture={
