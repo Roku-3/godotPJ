@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://waves.tres" type="Shader" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TileStage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/built titling bd.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Main.gd" type="Script" id=6]
 
 [sub_resource type="Shader" id=16]
 code = "shader_type canvas_item;
@@ -40,7 +42,8 @@ noise = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 1 )
-shader_param/h0 = 0.039
+shader_param/posY = 5.0
+shader_param/h0 = 0.053
 shader_param/h1 = 0.16
 shader_param/h2 = 0.284
 shader_param/h3 = 0.538
@@ -61,7 +64,12 @@ shader_param/wave_speed = 5.686
 shader_param/water_color = Color( 0.832892, 0.89, 0.2047, 1 )
 shader_param/noise = SubResource( 3 )
 
+[sub_resource type="DynamicFont" id=18]
+size = 42
+font_data = ExtResource( 5 )
+
 [node name="Main" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Icon" type="Sprite" parent="."]
 visible = false
@@ -80,7 +88,7 @@ position = Vector2( 512, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 modulate = Color( 0.741176, 1, 0.52549, 1 )
-position = Vector2( 84, 39 )
+position = Vector2( 100, -2 )
 z_index = 1
 speed = 5.0
 grav = 1.515
@@ -100,3 +108,11 @@ show_behind_parent = true
 material = SubResource( 6 )
 margin_right = 200.0
 margin_bottom = 400.0
+
+[node name="Title" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 14.0
+margin_right = 197.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 18 )
+text = "UNDERWATER"

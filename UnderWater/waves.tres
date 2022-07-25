@@ -5,6 +5,7 @@
 [resource]
 code = "shader_type canvas_item;
 
+uniform float posY;
 uniform float h0 : hint_range(0.0,1.0); // The height of the horizon
 uniform float h1 : hint_range(0.0,1.0);
 uniform float h2 : hint_range(0.0,1.0);
@@ -44,6 +45,10 @@ void fragment()
 	wcolor[4] = c4;
 	wcolor[5] = c5;
 	
+	for(int i=0; i<6; i++) {
+		waves[i] = fract((float(i) + -posY/100.) / 6.0);
+	}
+	
 	for (int i=0; i<6; i++){
 		float move_right;
 		if(i%2==1){
@@ -57,12 +62,22 @@ void fragment()
 	
 	}
 	
+	float top_height = 2.0;
+	int top_wave = -1;
+	for (int i=0; i<6; i++) {
+		if (waves[i] < top_height) {
+			top_wave = i;
+		}
+	}
 	
 	vec4 col = vec4(0);
+	int idx;
 	for (int i=0; i<6; i++){
+		idx = (i + top_wave)%6;
 		vec4 darkness = vec4(wcolor[i],wcolor[i],wcolor[i],1.);
-		col = mix(col, darkness, step(waves[i], UV.y));
+		col = mix(col, darkness, step(waves[idx], UV.y));
 	}
+	col = mix(col, vec4(1.,0,0,0.3), step(float(waves[5]), UV.y));
 	
 	// color burn
 	col = 1.0 - (1. - water_color) / col;
