@@ -5,12 +5,14 @@ export(float, 0, 10) var grav
 export(float, 0.8, 0.999) var dampX
 export(float, 0.8, 0.999) var dampY
 export(int) var stageWidth = 512 
+export(PackedScene) var par_damage
 
 var velocity = Vector2.ZERO
 var look_right = true
 
 onready var animState = $AnimationTree["parameters/playback"]
 onready var animTree = $AnimationTree
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +32,8 @@ func _process(delta: float) -> void:
 	velocity.y += grav
 
 	get_input()
+	if Input.is_action_just_pressed("ui_up") :
+		damaged()
 
 	velocity.x *= dampX
 	velocity.y *= dampY
@@ -86,4 +90,7 @@ func get_input() -> void:
 		$Shot.set_emitting(true)
 
 
-	
+func damaged()->void:
+	var parDamage = par_damage.instance()
+	parDamage.set_emitting(true)
+	add_child(parDamage)

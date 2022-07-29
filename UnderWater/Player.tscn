@@ -1,9 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Par_damage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/bubble.png" type="Texture" id=3]
 
 [sub_resource type="Curve" id=30]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.18214, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.0375 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.0573109, 0.0, 0, 0 ]
 
 [sub_resource type="Shader" id=32]
 code = "shader_type canvas_item;
@@ -271,11 +273,9 @@ start_node = "stand"
 [sub_resource type="CapsuleShape2D" id=8]
 height = 10.0
 
-[sub_resource type="Curve" id=31]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+par_damage = ExtResource( 2 )
 
 [node name="Shot" type="CPUParticles2D" parent="."]
 emitting = false
@@ -284,6 +284,7 @@ lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.37
+texture = ExtResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 5.0
 direction = Vector2( 0, 1 )
@@ -325,16 +326,3 @@ parameters/stand/blend_position = Vector2( -0.0868444, -0.305785 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 8 )
-
-[node name="Par_damage" type="CPUParticles2D" parent="."]
-emitting = false
-one_shot = true
-explosiveness = 0.74
-randomness = 0.28
-lifetime_randomness = 0.45
-direction = Vector2( 0, -1 )
-spread = 20.0
-gravity = Vector2( 0, -10 )
-initial_velocity = 50.0
-scale_amount = 5.0
-scale_amount_curve = SubResource( 31 )

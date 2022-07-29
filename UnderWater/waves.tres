@@ -1,8 +1,7 @@
-[gd_resource type="Shader" load_steps=2 format=2]
-
-[sub_resource type="GDScript" id=1]
+[gd_resource type="Shader" format=2]
 
 [resource]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 
 uniform float posY;
@@ -84,4 +83,3 @@ void fragment()
 	
 	COLOR = col;
 }"
-script = SubResource( 1 )

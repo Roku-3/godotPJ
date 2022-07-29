@@ -15,3 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var playerPos: Vector2 = $Player.get_position();
 	$"CanvasLayer/ColorRect".material.set_shader_param("posY", playerPos.y);
+	$"CanvasLayer/ColorRect".material.set_shader_param("posX", playerPos.x);
+
+	$"CanvasLayer/ColorRect".set_position(Vector2(fmod(-playerPos.x,512)-256,-88));
+	$"CanvasLayer/ColorRect2".set_position(Vector2(fmod(-playerPos.x,512)+256,-88));

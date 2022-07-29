@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/bubble.png" type="Texture" id=1]
+[ext_resource path="res://Par_damage.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0, 0.0170454 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Par_damage" type="CPUParticles2D"]
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.74
+randomness = 0.28
+lifetime_randomness = 0.45
+local_coords = false
+texture = ExtResource( 1 )
+direction = Vector2( 0, -1 )
+spread = 20.0
+gravity = Vector2( 0, -10 )
+initial_velocity = 50.0
+scale_amount = 5.0
+scale_amount_curve = SubResource( 31 )
+script = ExtResource( 2 )
