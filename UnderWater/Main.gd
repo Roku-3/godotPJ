@@ -19,3 +19,7 @@ func _process(delta: float) -> void:
 
 	$"CanvasLayer/ColorRect".set_position(Vector2(fmod(-playerPos.x,512)-256,-88));
 	$"CanvasLayer/ColorRect2".set_position(Vector2(fmod(-playerPos.x,512)+256,-88));
+
+
+func game_clear(body: Node) -> void:
+	get_tree().reload_current_scene()
